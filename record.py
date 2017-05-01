@@ -26,8 +26,6 @@ Usage of \'record\' is as follows:
 
     record start 
     record stop 
-
-    You tell me. This really that complicated?
 """
 
 STR_RUNNING = "FFmpeg seems to already be running on Process "
@@ -54,7 +52,7 @@ except:
     running = False
 
 ffScreenWithOverlay = ffmpy.FFmpeg(
-    inputs={ DISP + '.0':'-video_size '+videoSize+' -f x11grab', '/dev/video0': '-f v4l2 -video_size 200x100'},
+    inputs={ DISP + '.0':'-video_size '+videoSize+' -f x11grab', '/dev/video0': '-f v4l2 -video_size 320x180', 'default':'-f  pulse -ac 2'},
     outputs={dir+'/REC-' + TIMESTAMP + '.mkv': ['-filter_complex',"overlay=main_w-overlay_w-10:main_h-overlay_h-10"]}
 )
 
